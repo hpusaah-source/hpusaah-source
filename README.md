@@ -1,5 +1,9 @@
 ## Hi there 👋
 
+### 📺 Featured Video
+
+[![Featured video](https://img.youtube.com/vi/DTCyvo6cC54/maxresdefault.jpg)](https://youtu.be/DTCyvo6cC54)
+
 <!--
 **hpusaah-source/hpusaah-source** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
