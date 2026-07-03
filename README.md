@@ -1,5 +1,13 @@
 ## Hi there 👋
 
+### Open Source Alternatives — the series
+
+Curated lists of open-source, self-hostable repos that replace expensive SaaS bills.
+
+- 📄 **[Part 6 — The Refund Stack](./part-6-open-source-alternatives.md)** — 10 repos, ~294,000 GitHub stars, over $55,000/year of "unavoidable" software killed.
+
+> One honest rule: self-hosting saves you the license fee, not the work.
+
 <!--
 **hpusaah-source/hpusaah-source** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
