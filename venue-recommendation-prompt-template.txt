@@ -1,0 +1,77 @@
+========================================================================
+PROMPT TEMPLATE — EVENT VENUE RECOMMENDATION REPORT
+A reusable prompt for researching, ranking, and delivering a polished PDF
+venue recommendation report. Fill in the [bracketed] fields; delete any
+criteria you don't need.
+========================================================================
+
+ROLE: Act as an event-dining research analyst. Produce a professional,
+fact-checked venue recommendation report, then deliver it as a polished PDF.
+
+------------------------------------------------------------------------
+THE EVENT
+- Occasion / purpose: [e.g., hosting a visiting delegation / business dinner / family celebration]
+- Guest profile: [e.g., Vietnamese delegation; formal/business tone]
+- Date & time: [Day, Month DD, YYYY - start time]
+- Party size: [# guests]
+- Anchor location: [reference point - e.g., "near downtown LA" / a hotel / a stadium]
+- Tie to a timed event (optional): [e.g., "after the FIFA match at SoFi Stadium" -
+  if given, first research when that event ENDS (incl. worst case) and factor in
+  egress + traffic before recommending a seating time]
+
+MUST-HAVE CRITERIA (hard filters - disqualify venues that fail)
+- [e.g., fully enclosed PRIVATE ROOM that seats the full party]
+- [e.g., allows BYO WINE (corkage) - and separately assess BYO WHISKEY/SPIRITS]
+- [e.g., cuisine preference / dietary needs]
+- [budget ceiling per person, if any]
+
+RANKING PRIORITIES (in order - used to rank the ones that pass the filters)
+1. [top priority - e.g., beverage flexibility (wine + whiskey)]
+2. [e.g., suitability for a formal delegation]
+3. [e.g., reputation / prestige]
+4. [e.g., proximity / travel time from the anchor]
+
+------------------------------------------------------------------------
+RESEARCH INSTRUCTIONS
+- Spawn parallel agents by geographic cluster to research candidates thoroughly.
+- Verify each venue is OPEN (flag closures) and that the private room genuinely
+  fits the party size - do not assume.
+- For beverage policy, state the legal reality where relevant (e.g., in California,
+  corkage = wine only; spirits are a negotiation, not a policy) and grade any
+  spirits/whiskey option as an OUTLOOK: Favorable / Conditional / Unfavorable.
+- For EACH venue report: year established, cuisine, private-room capacity, overall
+  ratings (Google/Yelp/OpenTable/Michelin), chef & what they're known for, review
+  highlights, price per person, corkage/BYO terms, full contact (phone, address,
+  website, events email), and distance + realistic drive time from [anchor] at the
+  event time.
+- Mark anything unverified as "confirm by phone." Cite source URLs.
+
+------------------------------------------------------------------------
+OUTPUT - do this in stages, INLINE IN CHAT FIRST for my review:
+1. Draft the report inline as: (a) Purpose, (b) Requirements & Selection Criteria,
+   (c) beverage/legal note + grading legend, (d) a SINGLE consolidated ranking with
+   full per-venue profiles, (e) a proper comparison table near the end, (f) a summary
+   recommendation with a pre-booking confirmation checklist. List disqualified venues
+   with the reason. Keep it professional and concise. 100% accurate - no invented data.
+2. Wait for my edits.
+3. On approval, render it to a polished, print-ready PDF (US Letter, running footer
+   with page numbers, clean typographic hierarchy, color-coded indicators).
+
+========================================================================
+HOW TO USE IT
+========================================================================
+- Delete any criteria you don't need (e.g., drop the whiskey/spirits line if it's
+  just wine, or the "timed event" block for a standalone dinner).
+- The staged output matters - it makes the assistant draft inline for your review
+  BEFORE spending effort on the PDF.
+- Reusable beyond dining - swap "venue/dining" for hotels, event spaces, or vendors,
+  and the same structure (filters -> ranking priorities -> per-item profiles ->
+  comparison table -> PDF) holds.
+
+========================================================================
+QUICK VERSION (for simpler requests)
+========================================================================
+Recommend [#] venues for [occasion] for a party of [#] on [date/time] near [location].
+Must-haves: [private room / BYO / cuisine / budget]. Rank by [top priority].
+For each: cuisine, ratings, private-room capacity, price/person, BYO policy,
+contact, and drive time from [anchor]. Draft inline first; then make a polished PDF.
