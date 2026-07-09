@@ -1,0 +1,140 @@
+========================================================================
+RAC - RESEARCH & COMPARISON TEMPLATE
+A standardized framework for sourcing and qualifying vendors, suppliers,
+tools, or services, then proposing only fully-qualified candidates.
+Based on the [Charisse] RAC MASTERLIST methodology.
+Copy the template block (Section 3) for each new research topic.
+========================================================================
+
+------------------------------------------------------------------------
+1. WHAT RAC IS
+------------------------------------------------------------------------
+RAC (Research & Comparison) is a one-tab-per-topic method for turning an
+open-ended sourcing question ("find us a credible ring-box supplier") into
+a defensible, side-by-side decision. Each topic produces a matrix: CRITERIA
+down the rows, CANDIDATES across the columns, every cell qualified pass/fail,
+and a single recommended candidate.
+
+Core principles:
+- Qualify every cell. Each candidate is assessed against each criterion and
+  marked qualified or not - no blanks, no "maybe."
+- Only propose 100%-viable candidates. A candidate is only put forward as
+  PROPOSED if it meets the qualification threshold below.
+- Evidence, not assertion. Every qualified claim carries a source (link,
+  screenshot, quote, or document). Mark anything unverified as "to confirm."
+
+------------------------------------------------------------------------
+2. QUALIFICATION RULES & COLOR CODING
+------------------------------------------------------------------------
+  Qualified ........... GREEN cell  - meets this criterion (evidence attached)
+  Not qualified ....... RED cell    - fails this criterion
+  PROPOSED ............ GREEN header - recommended; meets >= 85% of criteria
+  2ND PRIORITY ........ YELLOW header- viable backup; strong but below threshold
+  NOT QUALIFIED ....... RED header   - fails a must-have; excluded
+
+- Qualification threshold: >= 85% of criteria qualified (auto-calculated as
+  qualified cells / total criteria). Below 85% cannot be PROPOSED.
+- Must-have criteria are gating. Failing a designated must-have (e.g.,
+  "Verified Supplier") disqualifies a candidate outright, regardless of %.
+
+------------------------------------------------------------------------
+3. THE TEMPLATE (copy per topic)
+------------------------------------------------------------------------
+< TOC                          <- link back to Table of Contents
+GOAL:   [One-sentence statement of exactly what is being sourced/decided,
+         including platform or geography constraints, e.g. "Propose a credible
+         supplier of ring-box and paper-box packaging on Alibaba."]
+
+QUALIFICATION KEY: Green = Qualified | Red = Not Qualified | Propose only >=85%
+
+CURRENT STATUS      |  PROPOSED   | 2ND PRIORITY | NOT QUALIFIED | NOT QUALIFIED
+RESEARCHED/SOURCED  | Candidate A | Candidate B  | Candidate C   | Candidate D
+Location            | [city/ctry] | [city/ctry]  | [city/ctry]   | [city/ctry]
+Image               | [photo]     | [photo]      | [photo]       | [photo]
+Link                | [url]       | [url]        | [url]         | [url]
+
+CRITERIA (rows)              | QUALIFICATION STANDARD        | A | B | C | D
+--------------------------------------------------------------------------
+--- Data Gathering & Assessment ---
+[Criterion 1 - must-have]    | [what "qualified" requires]   | G | G | G | R
+[Criterion 2]                | [what "qualified" requires]   | G | G | R | G
+[Criterion 3]                | [what "qualified" requires]   | G | R | G | G
+--- Commercial Terms ---
+[Criterion 4 - price/MOQ]    | [threshold, e.g. MOQ <= 500]  | G | G | R | G
+[Criterion 5 - lead time]    | [threshold, e.g. <= 30 days]  | G | R | G | G
+--- Trust & Verification ---
+[Criterion 6 - reviews]      | [threshold, e.g. >= 4.5/95%]  | G | G | G | R
+[Criterion 7 - certs/warranty]| [required certification]     | G | G | R | G
+--------------------------------------------------------------------------
+TOTAL CRITERIA: [N]          | QUALIFIED %  (auto = check/N) |100| 71| 57| 71
+STATUS (>=85% = Propose)     |                               |PRO|2ND| NO|2ND
+
+ADDITIONAL INFORMATION:
+[Notes, caveats, negotiation levers, items to confirm, contact/quotes, next steps.]
+
+------------------------------------------------------------------------
+4. DESIGNING GOOD CRITERIA
+------------------------------------------------------------------------
+- Make each criterion binary and testable. "Verified Supplier - yes/no,"
+  not "reputable." If it can't be answered pass/fail with evidence, sharpen it.
+- Flag must-haves explicitly. A few criteria should be gating (auto-disqualify
+  on fail); the rest are weighted equally toward the 85% score.
+- Group criteria into sections - e.g., Data Gathering & Assessment; Commercial
+  Terms (price, MOQ, lead time); Trust & Verification (reviews, certifications,
+  warranty, years in business); Logistics (shipping, location). Adjust per topic.
+- Standardize the row set across similar topics so tabs stay comparable.
+- State the standard, not just the label. Each criterion row names what
+  qualified means (the threshold), so scoring is objective and repeatable.
+
+------------------------------------------------------------------------
+5. REUSABLE PROMPT - GENERATE A NEW RAC
+------------------------------------------------------------------------
+ROLE: Act as a sourcing analyst using the RAC (Research & Comparison) method.
+
+GOAL: Source and qualify candidates for: [what to source - product/tool/service],
+on [platform / marketplace, e.g. Alibaba, Amazon, G2] within [geography, if any].
+
+MUST-HAVE CRITERIA (auto-disqualify on fail):
+- [e.g., Verified Supplier / vendor badge]
+- [e.g., required certification, warranty, or compliance]
+- [e.g., ships to / located in ...]
+
+SCORED CRITERIA (contribute to the >=85% qualification threshold):
+- [price / unit cost ceiling]   - [MOQ <= ...]         - [lead time <= ...]
+- [rating >= ... / response]     - [years in business]  - [customization / samples]
+- [add topic-specific criteria]
+
+INSTRUCTIONS:
+- Research 4-6 real candidates. For EACH, fill every criterion with a qualified/
+  not-qualified verdict PLUS the evidence (link, spec, quote). No blanks.
+- Verify each candidate is active/legitimate; flag anything unconfirmed as "to confirm."
+- Compute qualified % (= qualified / total criteria). Classify each as PROPOSED
+  (>=85% and all must-haves pass), 2ND PRIORITY (strong but <85%), or NOT QUALIFIED.
+- Present as a comparison matrix (criteria = rows, candidates = columns) with a
+  color/qualification key, then a one-line recommendation and an "items to confirm" list.
+
+OUTPUT: Draft inline first for my review; only propose 100%-qualified candidates.
+
+------------------------------------------------------------------------
+6. WORKED MINI-EXAMPLE (topic #1 from the masterlist)
+------------------------------------------------------------------------
+GOAL: Propose a credible Alibaba supplier of ring-box + paper-box packaging.
+
+Criterion (standard)          | Boyang Packing | Shenfutai   | Weisi
+------------------------------------------------------------------------
+Verified Supplier (must-have) | GREEN Verified | GREEN Verif.| RED Not verif.
+Product match (ring+paper box)| GREEN Yes      | GREEN Yes   | GREEN Yes
+Location (Guangdong hub)      | GREEN Guangdong| GREEN Gd.   | GREEN Guangdong
+Reviews / response rate       | GREEN High     | YELLOW Mixed| RED Low
+Qualified %                   | 100% PROPOSED  | ~80% 2nd Pri| ~50% Not Qual.
+
+Recommendation: Propose Shenzhen Boyang Packing Co., Ltd. (100% qualified,
+verified). Hold Shenfutai as 2nd priority; exclude Weisi (fails the verified-
+supplier must-have).
+
+========================================================================
+HOW TO USE
+Copy the Section 3 block into a new tab per topic, define the GOAL and criteria
+(Section 4), run the Section 5 prompt to populate candidates, and color each cell
+per Section 2. Keep the Table of Contents updated with each new topic.
+========================================================================
