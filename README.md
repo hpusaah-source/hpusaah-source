@@ -1,16 +1,28 @@
-## Hi there 👋
+<h1 align="center">Hi there 👋</h1>
 
-<!--
-**hpusaah-source/hpusaah-source** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+<p align="center">
+  I build tools that take the tedious admin layer off your plate — invoicing,
+  chasing unpaid payments, and moving the same numbers between apps that don't talk to each other.
+</p>
 
-Here are some ideas to get you started:
+---
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+### 🤖 Admin Assistant Add-on
+
+An add-on that plugs straight into the tools you already use — your books, your
+payments, your customer list, even your design app — and just handles the admin layer for you.
+
+- 🧾 **Invoicing** — created and sent without the copy-paste
+- 💸 **Payment chasing** — follows up on unpaid invoices so you don't have to
+- 🔗 **No more app-hopping** — keeps your books, payments, and customers in sync
+- 🧩 **30+ ready-made skills** for the jobs you keep putting off
+- 🪟 **One window** — everything lives inside a tool you already have open
+
+The tedious admin that used to eat your morning basically runs itself.
+
+---
+
+- 💬 Ask me about the plugin and how to set it up
+- 📫 How to reach me: hpusa.ah@gmail.com
+
+<!-- Drafted from your pitch. Edit freely before this goes live on your profile. -->
