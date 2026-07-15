@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bright Side Cleaning — Get Your Price in 10 Seconds</title>
+<style>
+  :root {
+    --bg: #0f1420;
+    --panel: #1a2130;
+    --panel-2: #222b3d;
+    --line: #2c384f;
+    --text: #eef2f8;
+    --muted: #9aa7bd;
+    --accent: #34d399;
+    --accent-2: #10b981;
+    --accent-ink: #06281d;
+    --danger: #f87171;
+    --radius: 16px;
+    --shadow: 0 20px 60px rgba(0,0,0,.45);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: radial-gradient(1200px 600px at 80% -10%, #16203a 0%, transparent 60%),
+                radial-gradient(900px 500px at -10% 110%, #12281f 0%, transparent 55%),
+                var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 40px 20px 64px;
+  }
+  header.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+  .logo {
+    width: 42px; height: 42px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    display: grid; place-items: center;
+    font-size: 22px;
+    box-shadow: 0 8px 24px rgba(16,185,129,.35);
+  }
+  .brand h1 { font-size: 18px; margin: 0; letter-spacing: .2px; }
+  .brand p { margin: 2px 0 0; color: var(--muted); font-size: 13px; }
+
+  .hero { margin-bottom: 26px; }
+  .hero h2 {
+    font-size: clamp(28px, 5vw, 44px);
+    line-height: 1.05;
+    margin: 0 0 10px;
+    letter-spacing: -.5px;
+  }
+  .hero h2 .grad {
+    background: linear-gradient(120deg, var(--accent), #7dd3fc);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .hero p { color: var(--muted); font-size: 16px; margin: 0; max-width: 60ch; }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1.1fr .9fr;
+    gap: 22px;
+    align-items: start;
+  }
+  @media (max-width: 780px) { .grid { grid-template-columns: 1fr; } }
+
+  .card {
+    background: linear-gradient(180deg, var(--panel), var(--panel-2));
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 24px;
+    box-shadow: var(--shadow);
+  }
+  .card h3 { margin: 0 0 4px; font-size: 16px; }
+  .card .sub { color: var(--muted); font-size: 13px; margin: 0 0 20px; }
+
+  .field { margin-bottom: 18px; }
+  .field label { display: block; font-size: 13px; color: var(--muted); margin-bottom: 8px; font-weight: 600; }
+  .stepper {
+    display: flex; align-items: stretch; gap: 0;
+    border: 1px solid var(--line); border-radius: 12px; overflow: hidden;
+    background: var(--bg);
+  }
+  .stepper button {
+    width: 48px; border: 0; background: var(--panel-2); color: var(--text);
+    font-size: 22px; cursor: pointer; transition: background .15s;
+  }
+  .stepper button:hover { background: #2e3a52; }
+  .stepper button:active { background: var(--accent-2); color: var(--accent-ink); }
+  .stepper input {
+    flex: 1; border: 0; background: transparent; color: var(--text);
+    text-align: center; font-size: 18px; font-weight: 700; -moz-appearance: textfield;
+    padding: 12px 0;
+  }
+  .stepper input::-webkit-outer-spin-button,
+  .stepper input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+
+  .num-input {
+    width: 100%; border: 1px solid var(--line); border-radius: 12px; background: var(--bg);
+    color: var(--text); font-size: 18px; font-weight: 700; padding: 13px 14px;
+  }
+  .num-input:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+
+  .toggle {
+    display: flex; align-items: center; justify-content: space-between;
+    border: 1px solid var(--line); border-radius: 12px; background: var(--bg);
+    padding: 14px 16px;
+  }
+  .toggle .tlabel { font-weight: 700; }
+  .toggle .thint { color: var(--muted); font-size: 12px; margin-top: 2px; }
+  .switch { position: relative; width: 54px; height: 30px; flex: none; }
+  .switch input { opacity: 0; width: 0; height: 0; }
+  .slider {
+    position: absolute; inset: 0; cursor: pointer;
+    background: #33405a; border-radius: 999px; transition: .2s;
+  }
+  .slider:before {
+    content: ""; position: absolute; height: 22px; width: 22px; left: 4px; top: 4px;
+    background: #fff; border-radius: 50%; transition: .2s;
+  }
+  .switch input:checked + .slider { background: var(--accent-2); }
+  .switch input:checked + .slider:before { transform: translateX(24px); }
+
+  .helper { color: var(--muted); font-size: 12px; margin-top: 6px; }
+  .error { color: var(--danger); font-size: 12px; margin-top: 6px; min-height: 14px; }
+
+  /* Price panel */
+  .price-card { position: sticky; top: 20px; }
+  .price-label { color: var(--muted); font-size: 13px; text-transform: uppercase; letter-spacing: .12em; }
+  .price {
+    font-size: clamp(40px, 8vw, 60px); font-weight: 800; letter-spacing: -1px;
+    margin: 6px 0 2px; line-height: 1;
+  }
+  .price small { font-size: 18px; color: var(--muted); font-weight: 600; }
+  .price-note { color: var(--muted); font-size: 13px; margin: 0 0 18px; }
+
+  .breakdown { border-top: 1px solid var(--line); padding-top: 14px; margin-top: 6px; }
+  .line { display: flex; justify-content: space-between; padding: 7px 0; font-size: 14px; }
+  .line span:first-child { color: var(--muted); }
+  .line.total { border-top: 1px solid var(--line); margin-top: 8px; padding-top: 12px; font-weight: 800; font-size: 17px; }
+  .line.total span:first-child { color: var(--text); }
+
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    width: 100%; margin-top: 18px; padding: 15px 18px; border: 0; cursor: pointer;
+    border-radius: 12px; font-size: 15px; font-weight: 800;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: var(--accent-ink);
+    transition: transform .08s, box-shadow .2s;
+    box-shadow: 0 10px 26px rgba(16,185,129,.35);
+  }
+  .btn:hover { transform: translateY(-1px); }
+  .btn:active { transform: translateY(0); }
+  .btn.secondary {
+    background: var(--panel-2); color: var(--text); box-shadow: none; border: 1px solid var(--line);
+    margin-top: 10px;
+  }
+
+  .trust { display: flex; gap: 18px; flex-wrap: wrap; margin-top: 22px; color: var(--muted); font-size: 13px; }
+  .trust div { display: flex; align-items: center; gap: 7px; }
+  .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); }
+
+  /* Summary / share page */
+  .summary { display: none; }
+  .summary.active { display: block; }
+  .app.hidden { display: none; }
+  .summary-card { max-width: 620px; margin: 0 auto; }
+  .stamp {
+    display: inline-flex; align-items: center; gap: 8px; background: rgba(52,211,153,.12);
+    color: var(--accent); border: 1px solid rgba(52,211,153,.35); padding: 6px 12px;
+    border-radius: 999px; font-size: 12px; font-weight: 700; margin-bottom: 16px;
+  }
+  .summary h2 { margin: 0 0 4px; font-size: 26px; }
+  .summary .quote-big { font-size: 52px; font-weight: 800; margin: 14px 0 2px; letter-spacing: -1px; }
+  .meta { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 22px 0; }
+  .meta .m { background: var(--bg); border: 1px solid var(--line); border-radius: 12px; padding: 14px; }
+  .meta .m .k { color: var(--muted); font-size: 12px; }
+  .meta .m .v { font-weight: 800; font-size: 18px; margin-top: 3px; }
+  .qid { color: var(--muted); font-size: 12px; margin-top: 8px; font-family: ui-monospace, Menlo, monospace; }
+  .copied { color: var(--accent); font-size: 13px; text-align: center; min-height: 18px; margin-top: 8px; }
+  footer { text-align: center; color: var(--muted); font-size: 12px; margin-top: 40px; }
+  a.link { color: var(--accent); text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="brand">
+    <div class="logo" aria-hidden="true">🧽</div>
+    <div>
+      <h1>Bright Side Cleaning</h1>
+      <p>Sparkling homes, honest prices</p>
+    </div>
+  </header>
+
+  <!-- QUOTE APP -->
+  <section class="app" id="app">
+    <div class="hero">
+      <h2>Get your price in <span class="grad">10 seconds</span>.</h2>
+      <p>No phone call required. Tell us about your home and see a clear, all-in quote instantly — then share it with a single link.</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h3>Your home</h3>
+        <p class="sub">Adjust the details below — your quote updates as you go.</p>
+
+        <div class="field">
+          <label for="bedrooms">Number of bedrooms</label>
+          <div class="stepper">
+            <button type="button" aria-label="Decrease bedrooms" data-step="bedrooms" data-dir="-1">−</button>
+            <input id="bedrooms" type="number" min="0" max="12" step="1" value="3" inputmode="numeric" aria-label="Number of bedrooms">
+            <button type="button" aria-label="Increase bedrooms" data-step="bedrooms" data-dir="1">+</button>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="bathrooms">Number of bathrooms</label>
+          <div class="stepper">
+            <button type="button" aria-label="Decrease bathrooms" data-step="bathrooms" data-dir="-1">−</button>
+            <input id="bathrooms" type="number" min="0" max="12" step="1" value="2" inputmode="numeric" aria-label="Number of bathrooms">
+            <button type="button" aria-label="Increase bathrooms" data-step="bathrooms" data-dir="1">+</button>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="sqft">Square footage</label>
+          <input id="sqft" class="num-input" type="number" min="100" max="20000" step="50" value="1500" inputmode="numeric" aria-label="Square footage">
+          <div class="error" id="sqftError" role="alert"></div>
+        </div>
+
+        <div class="field">
+          <label>Deep clean</label>
+          <div class="toggle">
+            <div>
+              <div class="tlabel">Add a deep clean</div>
+              <div class="thint">Baseboards, inside appliances, extra scrubbing</div>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="deepClean" aria-label="Deep clean">
+              <span class="slider"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div class="card price-card">
+        <div class="price-label">Your estimated price</div>
+        <div class="price" id="priceDisplay">$0</div>
+        <p class="price-note" id="priceNote">One-time visit · taxes included</p>
+
+        <div class="breakdown" id="breakdown"></div>
+
+        <button class="btn" id="getQuoteBtn" type="button">Get my sharable quote →</button>
+      </div>
+    </div>
+
+    <div class="trust">
+      <div><span class="dot"></span> Insured &amp; bonded cleaners</div>
+      <div><span class="dot"></span> Satisfaction guaranteed</div>
+      <div><span class="dot"></span> No hidden fees</div>
+    </div>
+  </section>
+
+  <!-- SHAREABLE SUMMARY -->
+  <section class="summary" id="summary">
+    <div class="card summary-card">
+      <div class="stamp">✓ Quote ready to share</div>
+      <h2>Bright Side Cleaning quote</h2>
+      <p class="sub" id="summarySub">Prepared just for you</p>
+
+      <div class="quote-big" id="summaryPrice">$0</div>
+      <p class="price-note" id="summaryNote">One-time visit · taxes included</p>
+
+      <div class="meta">
+        <div class="m"><div class="k">Bedrooms</div><div class="v" id="sBed">—</div></div>
+        <div class="m"><div class="k">Bathrooms</div><div class="v" id="sBath">—</div></div>
+        <div class="m"><div class="k">Square footage</div><div class="v" id="sSqft">—</div></div>
+        <div class="m"><div class="k">Deep clean</div><div class="v" id="sDeep">—</div></div>
+      </div>
+
+      <div class="breakdown" id="summaryBreakdown"></div>
+
+      <button class="btn" id="copyLinkBtn" type="button">Copy sharable link</button>
+      <div class="copied" id="copiedMsg" role="status"></div>
+      <button class="btn secondary" id="backBtn" type="button">← Edit my details</button>
+
+      <p class="qid" id="quoteId"></p>
+    </div>
+  </section>
+
+  <footer>
+    Bright Side Cleaning · Estimates are valid for 30 days · <a class="link" href="#" id="footerReset">Start over</a>
+  </footer>
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  // --- Pricing model -------------------------------------------------------
+  // Transparent, deterministic pricing derived from the four inputs.
+  var PRICING = {
+    base: 49,          // booking / travel base fee
+    perBedroom: 22,
+    perBathroom: 28,
+    perSqft: 0.045,    // per square foot
+    deepCleanMultiplier: 1.4, // applied to the whole clean
+    minPrice: 89
+  };
+
+  function clampInt(value, min, max, fallback) {
+    var n = parseInt(value, 10);
+    if (isNaN(n)) n = fallback;
+    if (n < min) n = min;
+    if (n > max) n = max;
+    return n;
+  }
+
+  function readInputs() {
+    var bedrooms = clampInt(el("bedrooms").value, 0, 12, 0);
+    var bathrooms = clampInt(el("bathrooms").value, 0, 12, 0);
+    var sqftRaw = parseInt(el("sqft").value, 10);
+    var deepClean = el("deepClean").checked;
+    return { bedrooms: bedrooms, bathrooms: bathrooms, sqftRaw: sqftRaw, deepClean: deepClean };
+  }
+
+  // Returns { valid, error, breakdown[], subtotal, total, sqft }
+  function computeQuote(inp) {
+    var sqft = inp.sqftRaw;
+    if (isNaN(sqft) || sqft <= 0) {
+      return { valid: false, error: "Enter your home's square footage to see a price." };
+    }
+    if (sqft < 100) {
+      return { valid: false, error: "Square footage looks too small — please enter at least 100." };
+    }
+    if (sqft > 20000) {
+      return { valid: false, error: "That's larger than we quote online. Please call us for a custom price." };
+    }
+
+    var lines = [];
+    lines.push({ label: "Base service fee", amount: PRICING.base });
+
+    var bedCost = inp.bedrooms * PRICING.perBedroom;
+    lines.push({ label: inp.bedrooms + " bedroom" + (inp.bedrooms === 1 ? "" : "s"), amount: bedCost });
+
+    var bathCost = inp.bathrooms * PRICING.perBathroom;
+    lines.push({ label: inp.bathrooms + " bathroom" + (inp.bathrooms === 1 ? "" : "s"), amount: bathCost });
+
+    var sqftCost = sqft * PRICING.perSqft;
+    lines.push({ label: sqft.toLocaleString() + " sq ft", amount: sqftCost });
+
+    var subtotal = PRICING.base + bedCost + bathCost + sqftCost;
+    var total = subtotal;
+
+    if (inp.deepClean) {
+      var deepAdd = subtotal * (PRICING.deepCleanMultiplier - 1);
+      lines.push({ label: "Deep clean (+40%)", amount: deepAdd });
+      total = subtotal * PRICING.deepCleanMultiplier;
+    }
+
+    if (total < PRICING.minPrice) {
+      lines.push({ label: "Minimum visit adjustment", amount: PRICING.minPrice - total });
+      total = PRICING.minPrice;
+    }
+
+    return {
+      valid: true,
+      error: "",
+      breakdown: lines,
+      subtotal: subtotal,
+      total: total,
+      sqft: sqft,
+      inputs: inp
+    };
+  }
+
+  function money(n) {
+    return "$" + (Math.round(n * 100) / 100).toLocaleString(undefined, {
+      minimumFractionDigits: 0, maximumFractionDigits: 0
+    });
+  }
+  function moneyExact(n) {
+    return "$" + n.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  }
+
+  function el(id) { return document.getElementById(id); }
+
+  function renderBreakdown(container, quote) {
+    container.innerHTML = "";
+    quote.breakdown.forEach(function (l) {
+      var row = document.createElement("div");
+      row.className = "line";
+      var a = document.createElement("span"); a.textContent = l.label;
+      var b = document.createElement("span"); b.textContent = moneyExact(l.amount);
+      row.appendChild(a); row.appendChild(b);
+      container.appendChild(row);
+    });
+    var totalRow = document.createElement("div");
+    totalRow.className = "line total";
+    var ta = document.createElement("span"); ta.textContent = "Total (all-in)";
+    var tb = document.createElement("span"); tb.textContent = money(quote.total);
+    totalRow.appendChild(ta); totalRow.appendChild(tb);
+    container.appendChild(totalRow);
+  }
+
+  // --- Live update on the app view ----------------------------------------
+  function update() {
+    var inp = readInputs();
+    var quote = computeQuote(inp);
+    var errBox = el("sqftError");
+
+    if (!quote.valid) {
+      el("priceDisplay").textContent = "—";
+      el("priceNote").textContent = "Enter valid details to see your price";
+      el("breakdown").innerHTML = "";
+      errBox.textContent = quote.error;
+      el("getQuoteBtn").disabled = true;
+      el("getQuoteBtn").style.opacity = "0.55";
+      el("getQuoteBtn").style.cursor = "not-allowed";
+      return null;
+    }
+
+    errBox.textContent = "";
+    el("priceDisplay").textContent = money(quote.total);
+    el("priceNote").textContent = (inp.deepClean ? "Deep clean · " : "Standard clean · ") + "one-time visit · taxes included";
+    renderBreakdown(el("breakdown"), quote);
+    el("getQuoteBtn").disabled = false;
+    el("getQuoteBtn").style.opacity = "1";
+    el("getQuoteBtn").style.cursor = "pointer";
+    return quote;
+  }
+
+  // --- Quote id + shareable state -----------------------------------------
+  function makeQuoteId(inp) {
+    // Deterministic, human-friendly id derived from inputs (no randomness).
+    var seed = inp.bedrooms + "-" + inp.bathrooms + "-" + inp.sqft + "-" + (inp.deepClean ? 1 : 0);
+    var hash = 0;
+    for (var i = 0; i < seed.length; i++) {
+      hash = ((hash << 5) - hash + seed.charCodeAt(i)) | 0;
+    }
+    return "BSC-" + Math.abs(hash).toString(36).toUpperCase().slice(0, 6);
+  }
+
+  function encodeState(inp) {
+    var params = new URLSearchParams();
+    params.set("bed", inp.bedrooms);
+    params.set("bath", inp.bathrooms);
+    params.set("sqft", inp.sqft);
+    params.set("deep", inp.deepClean ? "1" : "0");
+    params.set("view", "quote");
+    return params.toString();
+  }
+
+  function showSummary(quote) {
+    var inp = { bedrooms: quote.inputs.bedrooms, bathrooms: quote.inputs.bathrooms, sqft: quote.sqft, deepClean: quote.inputs.deepClean };
+
+    el("summaryPrice").textContent = money(quote.total);
+    el("summaryNote").textContent = (inp.deepClean ? "Deep clean · " : "Standard clean · ") + "one-time visit · taxes included";
+    el("sBed").textContent = inp.bedrooms;
+    el("sBath").textContent = inp.bathrooms;
+    el("sSqft").textContent = inp.sqft.toLocaleString() + " sq ft";
+    el("sDeep").textContent = inp.deepClean ? "Yes" : "No";
+    renderBreakdown(el("summaryBreakdown"), quote);
+
+    var qid = makeQuoteId(inp);
+    el("quoteId").textContent = "Quote ID: " + qid;
+
+    // Update the URL so the page itself is shareable / reload-safe.
+    try {
+      var url = window.location.pathname + "?" + encodeState(inp);
+      window.history.replaceState({}, "", url);
+    } catch (e) { /* file:// may block history in some browsers; non-fatal */ }
+
+    el("app").classList.add("hidden");
+    el("summary").classList.add("active");
+    el("copiedMsg").textContent = "";
+    window.scrollTo(0, 0);
+  }
+
+  function showApp() {
+    el("summary").classList.remove("active");
+    el("app").classList.remove("hidden");
+    try {
+      window.history.replaceState({}, "", window.location.pathname);
+    } catch (e) {}
+    window.scrollTo(0, 0);
+  }
+
+  function loadFromUrl() {
+    var params = new URLSearchParams(window.location.search);
+    if (params.get("view") !== "quote") return false;
+    if (params.has("bed")) el("bedrooms").value = clampInt(params.get("bed"), 0, 12, 0);
+    if (params.has("bath")) el("bathrooms").value = clampInt(params.get("bath"), 0, 12, 0);
+    if (params.has("sqft")) el("sqft").value = clampInt(params.get("sqft"), 100, 20000, 1500);
+    el("deepClean").checked = params.get("deep") === "1";
+    var quote = update();
+    if (quote) { showSummary(quote); return true; }
+    return false;
+  }
+
+  // --- Wire up events ------------------------------------------------------
+  ["bedrooms", "bathrooms", "sqft"].forEach(function (id) {
+    el(id).addEventListener("input", update);
+    el(id).addEventListener("change", update);
+  });
+  el("deepClean").addEventListener("change", update);
+
+  Array.prototype.forEach.call(document.querySelectorAll("[data-step]"), function (btn) {
+    btn.addEventListener("click", function () {
+      var target = el(btn.getAttribute("data-step"));
+      var dir = parseInt(btn.getAttribute("data-dir"), 10);
+      var cur = clampInt(target.value, 0, 12, 0);
+      target.value = clampInt(cur + dir, 0, 12, 0);
+      update();
+    });
+  });
+
+  el("getQuoteBtn").addEventListener("click", function () {
+    var quote = update();
+    if (quote) showSummary(quote);
+  });
+  el("backBtn").addEventListener("click", showApp);
+  el("footerReset").addEventListener("click", function (e) {
+    e.preventDefault();
+    showApp();
+  });
+
+  el("copyLinkBtn").addEventListener("click", function () {
+    var inp = readInputs();
+    inp.sqft = inp.sqftRaw;
+    var shareUrl = window.location.origin + window.location.pathname + "?" + encodeState(inp);
+    var msg = el("copiedMsg");
+
+    function fallbackCopy() {
+      var ta = document.createElement("textarea");
+      ta.value = shareUrl;
+      ta.style.position = "fixed"; ta.style.opacity = "0";
+      document.body.appendChild(ta); ta.focus(); ta.select();
+      var ok = false;
+      try { ok = document.execCommand("copy"); } catch (e) { ok = false; }
+      document.body.removeChild(ta);
+      return ok;
+    }
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(shareUrl).then(function () {
+        msg.textContent = "✓ Link copied — paste it anywhere to share this quote.";
+      }, function () {
+        msg.textContent = fallbackCopy()
+          ? "✓ Link copied — paste it anywhere to share this quote."
+          : "Copy this link: " + shareUrl;
+      });
+    } else {
+      msg.textContent = fallbackCopy()
+        ? "✓ Link copied — paste it anywhere to share this quote."
+        : "Copy this link: " + shareUrl;
+    }
+  });
+
+  // --- Init ----------------------------------------------------------------
+  if (!loadFromUrl()) {
+    update();
+  }
+})();
+</script>
+</body>
+</html>
