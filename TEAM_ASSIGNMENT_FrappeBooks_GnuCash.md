@@ -6,18 +6,9 @@
 
 ## Message from management
 
-Team,
-
-I want us to move off relying on QuickBooks/Wave/Excel and evaluate two **free, open-source**
-accounting apps: **Frappe Books** and **GnuCash**. Please install **both** on a test machine,
-set up a sample company, and run through the checklist below so we can compare them side by side
-against what QuickBooks and Wave do.
-
-This is time-sensitive — **please start ASAP** and report back within the timeline below. Both apps
-are free, install like normal desktop software, and store data locally, so there's no procurement
-or licensing to wait on. Ping me with any blockers.
-
-Thanks.
+Team — install **both** Frappe Books and GnuCash on a test machine, enter the sample data below,
+and fill in the comparison checklist. Both are free and open source. **Start today**; report back
+in 3 days. Details below. Flag any blockers.
 
 ---
 
