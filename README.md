@@ -14,3 +14,9 @@ Here are some ideas to get you started:
 - 😄 Pronouns: ...
 - ⚡ Fun fact: ...
 -->
+
+### 🎬 Featured video
+
+[![Featured YouTube video](https://img.youtube.com/vi/r3k64d0fyRU/hqdefault.jpg)](https://youtube.com/shorts/r3k64d0fyRU)
+
+▶️ [Watch on YouTube](https://youtube.com/shorts/r3k64d0fyRU)
