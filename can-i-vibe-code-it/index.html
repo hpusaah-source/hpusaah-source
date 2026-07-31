@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Can I Vibe Code It?</title>
+<meta name="description" content="An honest list of the software subscriptions you can replace with an app you build yourself in a weekend — and the ones you shouldn't. With the exact prompt for each.">
+<meta property="og:title" content="Can I Vibe Code It?">
+<meta property="og:description" content="Which subscriptions you can replace with a weekend build, which you can't, and the prompt for each.">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛠️</text></svg>">
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="head-top">
+      <div>
+        <h1>Can I vibe code it<span class="q">?</span></h1>
+        <p class="tagline">
+          An honest audit of the subscriptions you're paying for. Most of them are a database
+          table and a form — you can build those in a weekend now. Some of them are ten years of
+          engineering wearing a friendly icon. This tells you which is which, and hands you the
+          prompt.
+        </p>
+      </div>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle colour theme">Light</button>
+    </div>
+
+    <div class="legend">
+      <span><span class="dot yes"></span><b>Build it</b> — a weekend beats the invoice</span>
+      <span><span class="dot maybe"></span><b>It depends</b> — one hard part decides it</span>
+      <span><span class="dot no"></span><b>Keep paying</b> — the moat is real</span>
+    </div>
+  </div>
+</header>
+
+<div class="controls">
+  <div class="wrap">
+    <div class="controls-row">
+      <div class="search">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6">
+          <circle cx="7" cy="7" r="4.5"/><path d="M10.5 10.5 14 14"/>
+        </svg>
+        <input id="search" type="search" placeholder="Search 46 categories — Notion, Calendly, Sentry…" autocomplete="off" spellcheck="false">
+        <kbd>/</kbd>
+      </div>
+
+      <div class="chips" id="verdict-filters">
+        <button class="chip yes" data-verdict="yes" aria-pressed="false">Build it</button>
+        <button class="chip maybe" data-verdict="maybe" aria-pressed="false">It depends</button>
+        <button class="chip no" data-verdict="no" aria-pressed="false">Keep paying</button>
+      </div>
+
+      <div class="select-wrap">
+        <select class="chip" id="category" aria-label="Filter by category"></select>
+      </div>
+
+      <div class="select-wrap">
+        <select class="chip" id="sort" aria-label="Sort">
+          <option value="savings">Sort: biggest saving</option>
+          <option value="effort">Sort: quickest to build</option>
+          <option value="name">Sort: A–Z</option>
+          <option value="category">Sort: category</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="tally" id="tally"></div>
+  </div>
+</div>
+
+<main>
+  <div class="wrap">
+    <p class="count" id="count"></p>
+    <div class="grid" id="grid"></div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>
+      Prices are rough monthly list prices for a single user or a small team, gathered mid-2026.
+      Check your own invoice — the number that matters is the one you're actually paying, times
+      the number of seats.
+    </p>
+    <p>
+      Effort estimates assume a coding agent doing the typing and you doing the deciding. "A
+      weekend" means a working version you'd actually use, not feature parity. Feature parity is
+      never the goal — the reason self-built tools win is that they do the 20% you use and skip
+      the rest.
+    </p>
+    <p>
+      Before you cancel anything: run it in parallel for a month, and make sure you can get your
+      data back out of the thing you built. An app you can't export from is a subscription you
+      pay for in maintenance.
+    </p>
+  </div>
+</footer>
+
+<dialog id="sheet-dialog" aria-label="Details"><div class="sheet" id="sheet"></div></dialog>
+
+<script src="data/catalog.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>
