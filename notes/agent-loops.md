@@ -113,6 +113,33 @@ It'll wake up every interval, re-derive the same context, do a little, and you'l
 have paid for twenty context reloads to get one session's worth of work. Fan out
 for progress; loop for vigilance.
 
+## Writing the standing order
+
+The scheduler is trivial. The prompt is the whole product, and two properties
+separate a loop that helps from one you end up muting.
+
+**Loops have amnesia.** Each firing re-enqueues the prompt into a session that
+may have compacted away everything the last firing did. A loop cannot rely on
+remembering — it has to re-derive its position from state that lives outside
+itself. Look at the actual git log, the actual open PRs, an actual file it wrote
+last time. Any standing order phrased as "continue where you left off" is
+broken; phrase it as "look at X, determine what remains, do the next piece."
+This is also why loops are bad at open-ended progress and good at vigilance:
+vigilance is stateless by nature.
+
+**A loop needs a silence contract.** If every firing produces a report, you've
+rebuilt the noise the loop was supposed to absorb — now on a schedule, which is
+worse, because you can't even argue with it. Say explicitly what nothing-to-report
+looks like: no message, no commit, no comment. Then say what's worth waking you
+for. A well-tuned loop is silent most of the time, and its silence is
+informative.
+
+**Bound the blast radius in the prompt, not in your hopes.** Name what it may
+change and what it may never touch. "Fix the flaky test" and "fix the flaky test,
+only under `tests/`, never by deleting or skipping a test, and stop and report if
+the fix requires touching source" are the same instruction with very different
+worst cases.
+
 ## The number isn't the achievement
 
 "A few hundred agents going, a few thousand overnight" is a fun stat and a
